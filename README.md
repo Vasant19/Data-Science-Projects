@@ -14,6 +14,8 @@ Involving 7 different modularized algorithms for different Use-cases and problem
 
 `6. Deep Learning with Tensorflow: **Neural networks using Sequential API from Tensorflow, experimentation with Different activation functions**`
 
+`7. Apple Stock Price Prediction: **XGBOOST**`
+
 ## First step is to Clone the repository
 ```python
 git clone https://github.com/Vasant19/Data-Science-Projects.git
