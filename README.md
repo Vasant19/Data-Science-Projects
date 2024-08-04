@@ -12,6 +12,8 @@ Involving 7 different modularized algorithms for different Use-cases and problem
 
 `5. Employee Attrition Prediction: **Support Vector Machine using Different Kernels**`
 
+`6. Deep Learning with Tensorflow: **Neural networks using Sequential API from Tensorflow, experimentation with Different activation functions**`
+
 ## First step is to Clone the repository
 ```python
 git clone https://github.com/Vasant19/Data-Science-Projects.git
