@@ -10,6 +10,8 @@ Involving 7 different modularized algorithms for different Use-cases and problem
 
 `4. Predicting Chances of Admission at UCLA: Multi-Layer Perceptron (Neural Network)`
 
+`4. Employee Attrition Prediction: Support Vector Machine using Different Kernels`
+
 ## First step is to Clone the repository
 ```python
 git clone https://github.com/Vasant19/Data-Science-Projects.git
