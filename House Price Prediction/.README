@@ -16,7 +16,7 @@
 
 2. **Clone the Repository**
    git clone https://github.com/Vasant19/Data-Science-Projects.git
-   cd "Data-Science-Projects/House Price Prediction"
+   cd "House Price Prediction"
 
 3. **RUN THE FILE**
     python MLMAIN.py
