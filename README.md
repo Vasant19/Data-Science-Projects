@@ -2,7 +2,9 @@
 Involving 7 different modularized algorithms for different Use-cases and problem solutions
 #### All the machine learning models follow same Directory structure and flow while everything else, from dataset to algorithm selection being different. 
 ### Machine learning Models used:
-`House Price Prediction: Linear Regression, Decision Tree and Random Forest`
+`1) House Price Prediction: Linear Regression, Decision Tree and Random Forest`
+`2) Loan Eligibility Verification: Logistic Regression and Random Forest`
+`3) Mall Customers Segregration: Kmeans Clustering`
 
 ## First step is to Clone the repository
 ```python
