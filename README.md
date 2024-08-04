@@ -11,13 +11,13 @@ git clone https://github.com/Vasant19/Data-Science-Projects.git
 pip install requirements.txt
 ```
 
-## Third step and final step is to Change the directory in the terminal you want to run or edit hyperparameters of a model
+## Third step is to Change the directory in the terminal you want to run or edit hyperparameters of a model
 #### For example: 
 ```python
 cd "House Price Prediction"
 ```
 
-## Run the file
+## Finally Run the main file containing modularized code
 ```python
 python MLMAIN.py
 ```
