@@ -1,6 +1,6 @@
 # Data-Science-Projects
 Involving 7 different modularized algorithms for different Use-cases and problem solutions
-#### All the machine learning models follow same Directory structure and flow while everything else, from dataset to algorithm selection being different.
+#### All the machine learning models follow same Directory structure and flow while everything else, from dataset to algorithm selection being different. 
 
 ## First step is to Clone the repository
 ```python
@@ -20,4 +20,8 @@ cd "House Price Prediction"
 ## Finally Run the main file containing modularized code
 ```python
 python MLMAIN.py
+```
+### For relative imports code below is used (check explaination.ipynb) for more information)
+```python
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 ```
