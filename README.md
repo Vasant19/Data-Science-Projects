@@ -23,5 +23,7 @@ python MLMAIN.py
 ```
 ### For relative imports code below is used (check explaination.ipynb) for more information)
 ```python
+import sys
+import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 ```
