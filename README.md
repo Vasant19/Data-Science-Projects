@@ -7,6 +7,7 @@ Involving 7 different modularized algorithms for different Use-cases and problem
 `2. Loan Eligibility Verification: Logistic Regression and Random Forest`
 
 `3. Mall Customers Segregration: Kmeans Clustering`
+`3. Predicting Chance of Admission at UCLA: Multi-Layer Perceptron (Neural Network)`
 
 ## First step is to Clone the repository
 ```python
