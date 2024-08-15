@@ -1,11 +1,11 @@
 # Data-Science-Projects
 ## This repository serves both educational and research purposes related to different industries
 
-## Please Check the .ipynb files for step-by-step analysis
+### Please Check the Notebook .ipynb files for step-by-step analysis
 
 Involving 7 different modularized algorithms for different Use-cases and problem solutions
-#### All the machine learning models follow same Directory structure and flow while everything else, from dataset to algorithm selection being different. 
-### Machine learning Models used:
+### All the machine learning models follow same Directory structure and flow while everything else, from dataset to algorithm selection being different. 
+#### Machine learning Models used:
 `1. House Price Prediction: **Linear Regression, Decision Tree and Random Forest**`
 
 `2. Loan Eligibility Verification: **Logistic Regression and Random Forest**`
