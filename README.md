@@ -1,6 +1,6 @@
 # Data-Science-Projects
 ### This repository serves both educational and research purposes related to different industries
-#### Please Check the Notebook .ipynb files for step-by-step analysis
+#### Please Check the Notebook(.ipynb) files for step-by-step analysis and python (.py) for modularized scripts for code.
 
 # Involving 7 different modularized algorithms for different Use-cases and problem solutions
 ### All the machine learning models follow same Directory structure and flow while everything else, from dataset to algorithm selection being different. 
