@@ -1,5 +1,5 @@
 # %%
-# All necessary imports and Assignment wide Constants
+# All necessary imports and Code wide Constants
 import pandas as pd
 import numpy as np
 
@@ -27,7 +27,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Set random seed for reproducibility
-RANDOM_STATE = 41154429 
+RANDOM_STATE = 19
 
 # %% [markdown]
 # # Data Understanding
