@@ -19,6 +19,8 @@
 
 `7. Apple Stock Price Prediction: **TIME SERIES FORECASTING with ARIMA and ARIMAX, Additionally XGBOOST used**`
 
+`8. Heart Disease Prediction : **KNN, Logistic Regression, Random Forest, Support Vector Machine, and MultiLayerPerceptron`
+
 ## First step is to Clone the repository
 ```python
 git clone https://github.com/Vasant19/Data-Science-Projects.git
@@ -44,3 +46,4 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 ```
+
