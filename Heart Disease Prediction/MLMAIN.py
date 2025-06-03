@@ -1,9 +1,3 @@
-# %% [markdown]
-# # Vasant Dave
-# # 041154429
-# # Assignment 1:- Advanced Machine Learning
-
-# %%
 # All necessary imports and Assignment wide Constants
 import pandas as pd
 import numpy as np
@@ -32,16 +26,8 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Set random seed for reproducibility
-RANDOM_STATE = 41154429 
+RANDOM_STATE = 19
 
-# %% [markdown]
-# # Data Understanding
-
-# %% [markdown]
-# ## 1. Collect Initial Data
-# 
-
-# %%
 dataframe_original = pd.read_csv('Heart_Disease_Prediction.csv')
 
 # Create a new index column 'ID' and Set it as the index
@@ -53,19 +39,14 @@ dataframe_original.head()
 print("Index column:", dataframe_original.index.name)
 dataframe_original.head(300)
 
-# %% [markdown]
-# ## 2. Describe Data
-# 
+#    2. Describe Data
 
-# %%
 # Initial Statistics of the dataset
 dataframe_original.describe()
 
-# %% [markdown]
-# ## 3. Explore Data
+#    3. Explore Data
 # 
 
-# %%
 # Check columns and their data types
 dataframe_original.info()
 print("--" * 50)
@@ -73,7 +54,7 @@ print("--" * 50)
 print("\nUnique values per column:")
 print(dataframe_original.nunique())
 
-# %%
+   
 import matplotlib.pyplot as plt
 
 # Plot histograms for all numeric columns with shared layout
@@ -88,11 +69,7 @@ dataframe_original.select_dtypes(include="number").hist(
 plt.suptitle("Distributions of Numeric Features", fontsize=16)
 plt.tight_layout()
 plt.show()
-
-# %% [markdown]
-# ### Conversion of Class column into binary
-
-# %%
+   
 # Convert Class 'Heart Disease' column to binary values 0/1
 # Presence = 1, Absence = 0
 dataframe_original['Heart Disease'] = dataframe_original['Heart Disease'].astype('category').cat.codes
@@ -103,10 +80,7 @@ print(dataframe_original['Heart Disease'].unique())
 print("\nData frame after conversion:")
 dataframe_original.head(10)
 
-# %% [markdown]
-# ### Correlation analysis
-
-# %%
+   
 # Plot Correlation Matrix 
 plt.figure(figsize=(12, 8))
 sns.heatmap(
@@ -120,7 +94,7 @@ plt.title("Correlation Matrix of Features", fontsize=16)
 plt.tight_layout()
 plt.show()
 
-# %%
+   
 # Select Most relevant features based on correlation
 relevant_features = dataframe_original.corr()['Heart Disease'].abs().sort_values(ascending=False).index[:10]
 print("\nMost relevant features based on correlation with 'Heart Disease':")
@@ -133,10 +107,9 @@ print("\nFeatures with low correlation with 'Heart Disease':")
 print(len(low_correlation_features), "features")
 print(low_correlation_features)
 
-# %% [markdown]
-# ### Check for outliers and Handle them
+# Check for outliers and Handle them
 
-# %%
+   
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -149,7 +122,7 @@ plt.title("Boxplot of Numeric Columns")
 plt.tight_layout()
 plt.show()
 
-# %%
+   
 for col in numeric_cols:
     plt.figure(figsize=(6, 1.5))
     sns.boxplot(x=dataframe_original[col])
@@ -157,7 +130,7 @@ for col in numeric_cols:
     plt.show()
 
 
-# %%
+   
 # Show distribution + Outliers using violin plot
 plt.figure(figsize=(15, 6))
 sns.violinplot(
@@ -168,7 +141,7 @@ plt.title("Violin Plot of Numeric Columns")
 plt.tight_layout()
 plt.show()
 
-# %%
+   
 # Print first outliers for all numeric columns
 print("\nSuspected Outliers in Cholesterol Column:")
 print(dataframe_original['Cholesterol'].sort_values(ascending=False).head(5))
@@ -206,15 +179,7 @@ print(dataframe_original['Number of vessels fluro'].sort_values(ascending=False)
 # No outliers
 
 # Suspected Outliers are not removed as they are justified.
-
-
-# %% [markdown]
-# ## 4. Verify Data Quality
-
-# %% [markdown]
-# ### Check missing values,duplication existence and class imbalance
-
-# %%
+   
 # Check missing values, duplication existence and class imbalance
 print("Missing values in each column:")
 print(dataframe_original.isnull().sum())
@@ -226,26 +191,19 @@ print("--" * 50)
 print("\nDistribution of target variable 'Heart Disease':")
 print(dataframe_original["Heart Disease"].value_counts())
 
-# %% [markdown]
-# # Data Preparation
-
-# %% [markdown]
-# ## 1. Select Data
-
-# %%
+   
 # Prepare the dataset with most relevant features
 dataframe_with_most_relevant_features_after_pearson_correlation = dataframe_original.drop(columns=low_correlation_features)
 
-# %%
+   
 # check
 print("\nData frame after dropping low correlation features:")
 dataframe_with_most_relevant_features_after_pearson_correlation.head()
 
-# %% [markdown]
-# ### Print basic stats like number of instances, number of attributes, first few instances
-# 
 
-# %%
+# Print basic stats like number of instances, number of attributes, first few instances
+
+   
 # Number of columns and rows in the dataset
 print("\nNumber of columns in the original dataframe :" ,dataframe_original.shape[1])
 print("\nNumber of rows in the original dataframe :", dataframe_original.shape[0])
@@ -254,19 +212,7 @@ print("\nNumber of rows in the original dataframe :", dataframe_original.shape[0
 print("\nNumber of columns in the dataframe after dropping low correlation features:", dataframe_with_most_relevant_features_after_pearson_correlation.shape[1])
 print("\nNumber of rows in the dataframe after dropping low correlation features:", dataframe_with_most_relevant_features_after_pearson_correlation.shape[0])
 
-# %% [markdown]
-# ## 2. Clean Data
-
-# %%
-# No cleaning needed as there are no missing values or duplicates
-
-# %% [markdown]
-# ## 3. Construct Data
-
-# %% [markdown]
-# ### Standardization
-
-# %%
+   
 X = dataframe_with_most_relevant_features_after_pearson_correlation.drop(columns=["Heart Disease"])
 y = dataframe_with_most_relevant_features_after_pearson_correlation["Heart Disease"]
 
@@ -282,19 +228,8 @@ print(X_train_standardized.shape)
 print("\nStandardized Testing Data:")
 print(X_test_standardized.shape)
 
-# %% [markdown]
-# ## 4. Integrate Data
 
-# %%
-# No integration of any other dataset
-
-# %% [markdown]
-# ## 5. Format Data
-
-# %% [markdown]
-# ### PCA Application (Scree and Cumulative plot included)
-
-# %%
+   
 # First Plot scree plot to visualize optimal number of components
 
 pca_with_all_components = PCA(random_state=RANDOM_STATE)
@@ -314,7 +249,7 @@ plt.show()
 print("\nExplained Variance Ratios (all components):", pca_with_all_components.explained_variance_ratio_)
 print("Sum of Explained Variance (all components):", sum(pca_with_all_components.explained_variance_ratio_))
 
-# %%
+   
 # Second plot cumulative scree plot to visualize optimal number of components
 
 cumulative_variance = np.cumsum(pca_with_all_components.explained_variance_ratio_)
@@ -340,7 +275,7 @@ plt.show()
 for i, value in enumerate(cumulative_variance, start=1):
     print(f"Component {i} → {value:.4f}")
 
-# %%
+   
 # D is the optimal number of components based on the cumulative variance and explained variance ratio
 D = 5 
 
@@ -353,16 +288,12 @@ X_test_pca = pca_with_optimal_components.transform(X_test_standardized)
 print("\nExplained Variance Ratios (optimal components):", pca_with_optimal_components.explained_variance_ratio_)
 print("Sum of Explained Variance (optimal components):", sum(pca_with_optimal_components.explained_variance_ratio_))
 
-# %% [markdown]
-# ### LDA Application
-
-# %%
 # Apply LDA for dimensionality reduction
 lda = LDA(n_components=1)  # LDA can have at most (number of classes - 1) components
 X_train_lda = lda.fit_transform(X_train_standardized, y_train) # Needs y_train class labels for fitting and transforming
 X_test_lda = lda.transform(X_test_standardized)
 
-# %%
+   
 # The dataset has 10 features after feature selection.
 # LDA projects these 10-dimensional feature vectors into 1D by finding a weight vector (w).
 # Each sample's 1D LDA value is the dot product of w and its 10 features.
@@ -404,14 +335,7 @@ plt.title("LDA 1D Projection - Train Set")
 plt.legend()
 plt.show()
 
-
-# %% [markdown]
-# # Modeling & Evaluation
-
-# %% [markdown]
-# ### Modeling Function
-
-# %%
+   
 # Dictionaries to store trained models as per the training and testing sets
 trained_models = {}
 trained_models_PCA = {}
@@ -537,10 +461,7 @@ def run_evaluations(Dataset, Algorithm, Algorithm_param_sets=None, store_trained
     print(results_df)
     return None
 
-# %% [markdown]
-# ### 1. Random Forest, 2. MLP, 3. SVM, 4. Logistic Regression, 5. kNN
 
-# %%
 # Constants for Controlling the models
 
 ALGORITHM_1 = KNeighborsClassifier
@@ -573,18 +494,18 @@ ALGORITHM_5_PARAMS_set_2 = {'random_state': RANDOM_STATE,'hidden_layer_sizes': (
 ALGORITHM_5_PARAMS_set_3 = {'random_state': RANDOM_STATE,'hidden_layer_sizes': (200, 100),'activation': 'logistic','solver': 'adam','max_iter': 1000,}
 param_sets_MLP = [('Set 1', ALGORITHM_5_PARAMS_set_1), ('Set 2', ALGORITHM_5_PARAMS_set_2), ('Set 3', ALGORITHM_5_PARAMS_set_3)]
 
-# %% [markdown]
-# ### 3 sets of Dataframe:-
+
+# 3 sets of Dataframe:-
 # 1. Standardized Dataset
 # 2. After PCA
 # 3. After LDA
 
-# %%
+   
 # Use the function to train and evaluate models 
 
-##################################################################################
+                                                                                  
 # 1. Train and evaluate models using the standardized training and testing sets
-##################################################################################
+                                                                                  
 
 # 1. K-Nearest Neighbors
 run_evaluations(Dataset=Dataset_standardized, Algorithm=ALGORITHM_1, Algorithm_param_sets=param_sets_KNN, store_trained_models=trained_models, model_label_prefix="KNN")
@@ -598,17 +519,17 @@ print("\n" + "-" * 50)
 run_evaluations(Dataset=Dataset_standardized, Algorithm=ALGORITHM_3, Algorithm_param_sets=param_sets_RF, store_trained_models=trained_models, model_label_prefix="RF")
 print("\n" + "-" * 50)
 
-# # 4. Support Vector Classifier
+    4. Support Vector Classifier
 run_evaluations(Dataset=Dataset_standardized, Algorithm=ALGORITHM_4, Algorithm_param_sets=param_sets_SVC, store_trained_models=trained_models, model_label_prefix="SVC")
 print("\n" + "-" * 50)
 
 # 5. Multi-layer Perceptron Classifier
 run_evaluations(Dataset=Dataset_standardized, Algorithm=ALGORITHM_5, Algorithm_param_sets=param_sets_MLP, store_trained_models=trained_models, model_label_prefix="MLP")
 
-# %%
-##################################################################################
+   
+                                                                                  
 # 2. Train and evaluate models using the PCA transformed training and testing sets
-##################################################################################
+                                                                                  
 
 # 1. K-Nearest Neighbors
 run_evaluations(Dataset=Dataset_PCA, Algorithm=ALGORITHM_1, Algorithm_param_sets=param_sets_KNN, store_trained_models=trained_models_PCA, model_label_prefix="KNN")
@@ -630,10 +551,10 @@ print("\n" + "-" * 50)
 run_evaluations(Dataset=Dataset_PCA, Algorithm=ALGORITHM_5, Algorithm_param_sets=param_sets_MLP, store_trained_models=trained_models_PCA, model_label_prefix="MLP")
 
 
-# %%
-##################################################################################
+   
+                                                                                  
 # 3. Train and evaluate models using the LDA transformed training and testing sets
-##################################################################################
+                                                                                  
 # 1. K-Nearest Neighbors
 run_evaluations(Dataset=Dataset_LDA, Algorithm=ALGORITHM_1, Algorithm_param_sets=param_sets_KNN, store_trained_models=trained_models_LDA, model_label_prefix="KNN")
 print("\n" + "-" * 50)
@@ -653,10 +574,8 @@ print("\n" + "-" * 50)
 # 5. Multi-layer Perceptron Classifier
 run_evaluations(Dataset=Dataset_LDA, Algorithm=ALGORITHM_5, Algorithm_param_sets=param_sets_MLP, store_trained_models=trained_models_LDA, model_label_prefix="MLP")
 
-# %% [markdown]
-# ### BEST SETS AND EVALUATION 
 
-# %%
+   
 # knn:
 # std: set 2
 # pca: set 1
@@ -712,7 +631,7 @@ y_pred_best_SVC_LDA = best_model_SVC_LDA.predict(X_test_lda)
 y_pred_best_MLP_LDA = best_model_MLP_LDA.predict(X_test_lda)
 
 
-# %%
+   
 def plot_pca_test_actual_vs_predicted(pca_testing_set, actual_set_testing, predicted_set_testing):
     # Misclassified points
     misclassified = actual_set_testing != predicted_set_testing
@@ -776,7 +695,7 @@ def plot_pca_test_actual_vs_predicted(pca_testing_set, actual_set_testing, predi
     plt.tight_layout()
     plt.show()
 
-# %%
+   
 def plot_pca_train_actual_and_support_vectors(pca_training_set, actual_set_training, support_vectors_pca, support_vector_labels):
     fig, axs = plt.subplots(1, 2, figsize=(15, 6))
 
@@ -830,10 +749,7 @@ def plot_pca_train_actual_and_support_vectors(pca_training_set, actual_set_train
     plt.tight_layout()
     plt.show()
 
-# %% [markdown]
-# ### After applying PCA, actual classes and predicted classes of the test set, misclassified instances should be circled with a different color (2 plots in parallel)
 
-# %%
 # Plotting implementation for PCA results
 print("\nPlotting PCA Results...")
 
@@ -857,21 +773,14 @@ plot_pca_test_actual_vs_predicted(X_test_pca, y_test, y_pred_best_SVC_PCA)
 print("\nPlotting Actual vs Predicted for MLP after PCA")
 plot_pca_test_actual_vs_predicted(X_test_pca, y_test, y_pred_best_MLP_PCA)
 
-# %% [markdown]
-# ### After applying PCA, actual classes of the train set color coded by class and then in the second plot, support vectors should also be plotted, color coded by class (2 plots in parallel)
-
-# %%
+   
 support_vectors_pca = best_model_SVC.support_vectors_
 support_vector_indices = best_model_SVC.support_
 support_vector_labels = y_train.iloc[support_vector_indices]
 
 plot_pca_train_actual_and_support_vectors(X_train_pca, y_train, support_vectors_pca, support_vector_labels)
 
-
-# %% [markdown]
-# ### After applying LDA, actual classes and predicted classes of the test set, misclassified instances should be circled with a different color (2 plots in parallel)
-
-# %%
+  
 def plot_lda_actual_vs_predicted(lda_testing_set, actual_testing_set, predicted_testing_set):
     import matplotlib.pyplot as plt
     import numpy as np
@@ -933,7 +842,7 @@ def plot_lda_actual_vs_predicted(lda_testing_set, actual_testing_set, predicted_
     plt.show()
 
 
-# %%
+   
 # Plotting implementation for LDA results
 print("\nPlotting LDA Results...")
 
@@ -957,10 +866,7 @@ plot_lda_actual_vs_predicted(X_test_lda, y_test, y_pred_best_SVC_LDA)
 print("\nPlotting Actual vs Predicted for MLP after LDA")
 plot_lda_actual_vs_predicted(X_test_lda, y_test, y_pred_best_MLP_LDA)
 
-# %% [markdown]
-# ### After applying LDA, actual classes of the train set color coded by class and then in the second plot, support vectors should also be plotted, color coded by class (2 plots in parallel)
 
-# %%
 def plot_lda_train_actual_and_support_vectors(lda_training_set, actual_set_training,
                                               support_vectors_lda, support_vector_labels):
     import numpy as np
@@ -1035,7 +941,7 @@ def plot_lda_train_actual_and_support_vectors(lda_training_set, actual_set_train
     plt.show()
 
 
-# %%
+   
 support_vectors_lda = best_model_SVC_LDA.support_vectors_
 support_vector_indices = best_model_SVC_LDA.support_
 support_vector_labels = y_train.iloc[support_vector_indices]
